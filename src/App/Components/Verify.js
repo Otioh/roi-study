@@ -1,7 +1,7 @@
 
 import React, { useContext, useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEnvelope, faKey, faLock, faLockOpen, faUserEdit} from '@fortawesome/free-solid-svg-icons'
+import {faArrowAltCircleRight, faCheck, faEnvelope, faKey, faLock, faLockOpen, faUserEdit} from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import logo from '../Images/logo.png';
 
@@ -9,17 +9,17 @@ import GlobalContext from './Context/Api';
 import axios from 'axios';
 
 
-function Reset() {
+function Verify() {
     const [email, setemail]= useState('');
-    const {setloading, setDisplay, setmsg, setstatus,  setuser}=useContext(GlobalContext);
+    const {user, setmsg, setstatus, setDisplay}=useContext(GlobalContext);
     let navigate=useNavigate();
 
 
-const reset=()=>{
-  setmsg('Please try again later');
-  setstatus(false);
-  setDisplay(true)
-}
+    const verify=()=>{
+        setmsg('Please try again later');
+        setstatus(false);
+        setDisplay(true)
+      }
 
   return (
 
@@ -43,7 +43,7 @@ const reset=()=>{
     <main id="main" className="main" >
 
       <div className="pagetitle">
-        <h1>Reset Password</h1>
+        <h1>Verify Account</h1>
         
       </div>
       <section className="section">
@@ -52,13 +52,13 @@ const reset=()=>{
   
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Enter Details to Recover Password</h5>
+                <h5 className="card-title">Enter Verification code sent to <strong>{user.email}</strong></h5>
       <div className="row mb-3">
                     <label for="inputEmail" className="col-sm-2 col-form-label">
                       <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
                       </label>
                     <div className="col-sm-10">
-                      <input type="email" className="form-control" placeholder='E-Mail' value={email} onChange={(e)=>{
+                      <input type="text" className="form-control" placeholder='Code' value={email} onChange={(e)=>{
                           setemail(e.target.value);
                     
                       }} />
@@ -71,8 +71,8 @@ const reset=()=>{
                  
                   <div className="col-sm-10">
                     <button type="submit" className="btn btn-primary" onClick={()=>{
-            reset()
-                    }}> <FontAwesomeIcon icon={faKey}></FontAwesomeIcon> Reset</button>
+            verify()
+                    }}> <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> Verify</button>
             
                 
                   </div>
@@ -81,8 +81,8 @@ const reset=()=>{
 
       
                 <button style={{float:'right'}} type="submit" className="btn btn-outline-primary" onClick={()=>{
-   navigate('/login')
-                }}> <FontAwesomeIcon icon={faLock}></FontAwesomeIcon> Login</button>
+   navigate('/programmes')
+                }}> <FontAwesomeIcon icon={faArrowAltCircleRight}></FontAwesomeIcon> Skip</button>
                
               </div>
             </div>
@@ -100,4 +100,4 @@ const reset=()=>{
   )
 }
 
-export default Reset
+export default Verify

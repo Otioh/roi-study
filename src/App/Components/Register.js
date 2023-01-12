@@ -17,7 +17,7 @@ const {setDisplay, setmsg, setstatus, setloading}=useContext(GlobalContext);
 
   const register=()=>{
     setloading(true)
-    axios.post('http://localhost:8000/students', {first_name, surname, email, phone, password}).then((response)=>{
+    axios.post('http://192.168.0.149:8000/students', {first_name, surname, email, phone, password}).then((response)=>{
       setDisplay(true)
       setmsg(response.data.message)
       setloading(false)

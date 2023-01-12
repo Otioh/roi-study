@@ -8,9 +8,14 @@ export const ContextProvider=({children})=>{
     const [status, setstatus] = useState(false);
     const [loading, setloading] = useState(false);
     const [user, setuser] = useState({});
+    const [pop, setpop] = useState({
+        display:false,
+        title:'',
+        content:<></>
+    });
 return (
     <GlobalContext.Provider value={{
-        display, setDisplay, msg, status, setmsg, setstatus, loading, setloading, user, setuser
+        display, setDisplay, msg, status, setmsg, setstatus, loading, setloading, user, setuser, pop, setpop
         }}>
         {children}
     </GlobalContext.Provider>

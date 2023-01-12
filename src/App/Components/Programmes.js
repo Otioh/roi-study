@@ -3,11 +3,27 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faBell, faBook, faBookOpen, faCoins, faDashboard, faGear, faInfo, faKey, faLockOpen, faMessage, faPhone, faPowerOff, faSearch, faUser, faUserEdit} from '@fortawesome/free-solid-svg-icons';
 import logo from '../Images/logo.png';
 import pro from '../Images/user.png';
+import lap from '../Images/images.jpeg';
 import GlobalContext from './Context/Api';
+import { PaystackButton } from 'react-paystack';
+
+import axios from 'axios';
 
 function Programmes() {
-    const {user}=useContext(GlobalContext);
-  
+    const {user, setpop, setloading}=useContext(GlobalContext);
+    const componentProps = {
+      email:user.email,
+      amount:30000,
+      metadata: {
+        name:user.first_name+" "+user.surname,
+        phone:user.phone,
+      },
+      publicKey:'pk_test_333a6d671ee3429b1b36e2aa2a8bf45eca7d3926',
+      text: "Pay Now",
+      onSuccess: () =>
+        alert("Thanks for doing business with us! Come back soon!!"),
+      onClose: () => alert("Wait! You need this oil, don't go!!!!"),
+    }
   return (
     <div>
     
@@ -34,12 +50,12 @@ function Programmes() {
             document.getElementById('profile').style.display='block'
           }}>
             <img src={pro} className="rounded-circle" alt=''/>
-            <span className="d-none d-md-block dropdown-toggle ps-2"> {user[0].first_name} {user[0].surname}</span>
+            <span className="d-none d-md-block dropdown-toggle ps-2"> {user.first_name} {user.surname}</span>
           </a>
           <ul  id='profile'  className="dropdown-menu ">
             <li className="dropdown-header">
-              <h6>{user[0].first_name} {user[0].surname}</h6>
-              <span>{user[0].email}</span>
+              <h6>{user.first_name} {user.surname}</h6>
+              <span>{user.email}</span>
             </li>
             <li>
              <hr className="dropdown-divider"/>
@@ -143,18 +159,122 @@ function Programmes() {
                 </div>
 
                 <div className="card-body">
-                  <h5 className="card-title">Web Development (Fullstack) <span>| Erim Emmanuel</span></h5>
-
+                  <h5 className="card-title">Web Development (Front End) <span>| Diploma</span></h5>
+                  <img alt='ProgrammeImage' src={lap} style={{width:'90%'}}/>
                   <div className="d-flex align-items-center">
+                   
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faBook} className="bi bi-cart"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faCoins} ></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>$300</h6>
+                      <h6>NGN 300</h6>
                       <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
 
                     </div>
                   </div>
+                  <div style={{width:'100%', padding:'10px'}}>
+                  <button style={{width:'95%'}} className='btn btn-primary' onClick={()=>{
+                    setloading(true)
+
+                    setpop({display:true, title:`${user.first_name} ${user.surname}  || Web Development (Front End) | Diploma`, content:<>
+                    <div style={{width:'100%', padding:'20px'}}>
+                    <img style={{float:'left', margin:'7px'}} alt='ProgrammeImage' src={lap}  />
+
+                    <div style={{float:'left', margin:'7px'}}>
+                    <ul className='list-group' >
+                    <li className='list-group-item active'>
+Courses to cover
+                    </li>
+
+                    <li className='list-group-item'>
+Web Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+JavaScript Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+Advance JavaScript
+                    </li>
+
+
+                    <li className='list-group-item'>
+React JS
+                    </li>
+
+
+
+                    <li className='list-group-item'>
+Redux & Redux Toolkit
+                    </li>
+                  </ul>
+
+                    </div>
+
+<div style={{float:'left', width:'200px'}}>
+<h3>
+  Programme Description
+</h3>
+This is the first item's accordion body. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. 
+<br/><br/>
+
+<div className='card'>
+<div className='card-title'>
+<h4>NGN 300</h4>
+</div>
+<ul className=' list-group'>
+  <li className=' list-group-item flex m-auto'>
+Duration 3 Months
+  </li>
+</ul>
+<PaystackButton className="btn btn-primary" {...componentProps} />
+</div>
+</div>
+
+                    </div>
+                    </>})
+
+setTimeout(() => {
+  setloading(false)
+}, 2000);
+
+
+                  }}>
+                    Choose Programme
+                  </button>
+
+                  </div>
+                  <ul className='list-group'>
+                    <li className='list-group-item'>
+Web Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+JavaScript Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+Advance JavaScript
+                    </li>
+
+
+                    <li className='list-group-item'>
+React JS
+                    </li>
+
+
+
+                    <li className='list-group-item'>
+Redux & Redux Toolkit
+                    </li>
+                  </ul>
+           
+                  
                 </div>
 
               </div>
@@ -178,18 +298,52 @@ function Programmes() {
                 </div>
 
                 <div className="card-body">
-                  <h5 className="card-title">Android Development <span>| Erim Emmanuel</span></h5>
-
+                  <h5 className="card-title">Android Development <span>| Certificate</span></h5>
+                  <img alt='ProgrammeImage' src={lap} style={{width:'90%'}}/>
                   <div className="d-flex align-items-center">
+                   
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faCoins} className="bi bi-currency-dollar"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faCoins} ></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>$3,264</h6>
-                      <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
+                      <h6>NGN 300</h6>
+                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
 
                     </div>
                   </div>
+                  <div style={{width:'100%', padding:'10px'}}>
+                  <button style={{width:'95%'}} className='btn btn-primary'>
+                    Choose Programme
+                  </button>
+
+                  </div>
+                  <ul className='list-group'>
+                    <li className='list-group-item'>
+Android Studio Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+Java Basics 
+                    </li>
+
+
+                    <li className='list-group-item'>
+JavaScript
+                    </li>
+
+
+                    <li className='list-group-item'>
+React Native
+                    </li>
+
+
+
+                    <li className='list-group-item'>
+Redux & Redux Toolkit
+                    </li>
+                  </ul>
+           
                 </div>
 
               </div>
@@ -213,17 +367,51 @@ function Programmes() {
 
                 <div className="card-body">
                   <h5 className="card-title">iOS Development <span>| Erim Emmanuel</span></h5>
-
+                  <img alt='ProgrammeImage' src={lap} style={{width:'90%'}}/>
                   <div className="d-flex align-items-center">
+                   
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faBook} className="bi bi-cart"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faCoins} ></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>$300</h6>
+                      <h6>NGN 300</h6>
                       <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
 
                     </div>
                   </div>
+                  <div style={{width:'100%', padding:'10px'}}>
+                  <button style={{width:'95%'}} className='btn btn-primary'>
+                    Choose Programme
+                  </button>
+
+                  </div>
+                  <ul className='list-group'>
+                    <li className='list-group-item'>
+Web Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+JavaScript Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+Advance JavaScript
+                    </li>
+
+
+                    <li className='list-group-item'>
+React JS
+                    </li>
+
+
+
+                    <li className='list-group-item'>
+Redux & Redux Toolkit
+                    </li>
+                  </ul>
+           
                 </div>
 
               </div>
@@ -248,17 +436,51 @@ function Programmes() {
 
                 <div className="card-body">
                   <h5 className="card-title">Backend Development <span>| Erim Emmanuel</span></h5>
-
+                  <img alt='ProgrammeImage' src={lap} style={{width:'90%'}}/>
                   <div className="d-flex align-items-center">
+                   
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faCoins} className="bi bi-currency-dollar"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faCoins} ></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>$3,264</h6>
-                      <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
+                      <h6>NGN 300</h6>
+                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Discount</span>
 
                     </div>
                   </div>
+                  <div style={{width:'100%', padding:'10px'}}>
+                  <button style={{width:'95%'}} className='btn btn-primary'>
+                    Choose Programme
+                  </button>
+
+                  </div>
+                  <ul className='list-group'>
+                    <li className='list-group-item'>
+Web Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+JavaScript Basics
+                    </li>
+
+
+                    <li className='list-group-item'>
+Advance JavaScript
+                    </li>
+
+
+                    <li className='list-group-item'>
+React JS
+                    </li>
+
+
+
+                    <li className='list-group-item'>
+Redux & Redux Toolkit
+                    </li>
+                  </ul>
+           
                 </div>
 
               </div>

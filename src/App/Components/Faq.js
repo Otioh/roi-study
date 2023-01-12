@@ -9,13 +9,13 @@ import GlobalContext from './Context/Api';
 import axios from 'axios';
 
 
-function Reset() {
+function Faq() {
     const [email, setemail]= useState('');
     const {setloading, setDisplay, setmsg, setstatus,  setuser}=useContext(GlobalContext);
     let navigate=useNavigate();
 
 
-const reset=()=>{
+const faq=()=>{
   setmsg('Please try again later');
   setstatus(false);
   setDisplay(true)
@@ -43,7 +43,7 @@ const reset=()=>{
     <main id="main" className="main" >
 
       <div className="pagetitle">
-        <h1>Reset Password</h1>
+        <h1>Frequently Asked Questions</h1>
         
       </div>
       <section className="section">
@@ -52,37 +52,13 @@ const reset=()=>{
   
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Enter Details to Recover Password</h5>
-      <div className="row mb-3">
-                    <label for="inputEmail" className="col-sm-2 col-form-label">
-                      <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
-                      </label>
-                    <div className="col-sm-10">
-                      <input type="email" className="form-control" placeholder='E-Mail' value={email} onChange={(e)=>{
-                          setemail(e.target.value);
-                    
-                      }} />
-                    </div>
-                  </div>
+                
     
 
-                  
-                <div className="row mb-3">
-                 
-                  <div className="col-sm-10">
-                    <button type="submit" className="btn btn-primary" onClick={()=>{
-            reset()
-                    }}> <FontAwesomeIcon icon={faKey}></FontAwesomeIcon> Reset</button>
-            
-                
-                  </div>
-                </div>
-
+              
 
       
-                <button style={{float:'right'}} type="submit" className="btn btn-outline-primary" onClick={()=>{
-   navigate('/login')
-                }}> <FontAwesomeIcon icon={faLock}></FontAwesomeIcon> Login</button>
+              
                
               </div>
             </div>
@@ -100,4 +76,4 @@ const reset=()=>{
   )
 }
 
-export default Reset
+export default Faq

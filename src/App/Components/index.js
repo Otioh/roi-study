@@ -10,6 +10,8 @@ import Register from './Register';
 import Dashboard from './Dashboard/Index';
 import Programmes from './Programmes';
 import Reset from './Reset';
+import Verify from './Verify';
+import Faq from './Faq';
 function Index({setDisplay}) {
 
 const router=createHashRouter(
@@ -21,6 +23,8 @@ const router=createHashRouter(
     {path:'/dashboard', element:<Dashboard/>},
     {path:'/programmes', element:<Programmes/>},
     {path:'/reset', element:<Reset/>},
+    {path:'/verify', element:<Verify/>},
+    {path:'/faq', element:<Faq/>},
     
   
   ]

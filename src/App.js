@@ -5,6 +5,7 @@ import Index from './App/Components';
 import { ContextProvider } from './App/Components/Context/Api';
 import Loader from './App/Components/Loader';
 import Modal from './App/Components/Modal';
+import Pop from './App/Components/Pop';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
    <ContextProvider>
     <Loader/>
      <Modal msg={'This is the message'} status={true}  />
+     <Pop/>
      <Index />
 
    </ContextProvider>

@@ -17,15 +17,20 @@ const {setloading, setDisplay, setmsg, setstatus,  setuser}=useContext(GlobalCon
 
   const login=()=>{
     setloading(true)
-    axios.post('http://localhost:8000/auth', {email,  password}).then((response)=>{
+    axios.post('http://192.168.0.149:8000/auth', {email,  password}).then((response)=>{
       setDisplay(true)
       setmsg(response.data.message)
       setloading(false)
 if(response.data.status){
 
   setstatus(true)
-setuser(response.data.data)
+setuser(response.data.data[0])
+if(response.data.data[0].verified){
   navigate('/programmes');
+}else{
+  navigate('/verify');
+}
+  
 }else{
   setstatus(false)
 }
