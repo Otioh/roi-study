@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import Index from './App/Components';
+import { ContextProvider } from './App/Components/Context/Api';
+import Loader from './App/Components/Loader';
+import Modal from './App/Components/Modal';
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <ContextProvider>
+    <Loader/>
+     <Modal msg={'This is the message'} status={true}  />
+     <Index />
+
+   </ContextProvider>
+   </>
+  
+    
   );
 }
+
 
 export default App;
