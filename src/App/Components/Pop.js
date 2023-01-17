@@ -11,8 +11,8 @@ function Pop() {
       <div className="modal " id="basicModal" style={pop.display?{display:'block'}:{display:'none'}} tabindex="-1">
                 <div className="modal-dialog modal-fullscreen">
                   <div className="modal-content ">
-                    <div className="modal-header">
-                      <h5 className={`modal-title text-primary`}>{ pop.title}</h5>
+                    <div className="modal-header " style={{backgroundColor:'#012970', color:'white'}} >
+                      <h5 className={`modal-title`}>{ pop.title}</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={()=>{
                         setpop({...pop, display:false})
                       }}></button>
@@ -21,7 +21,7 @@ function Pop() {
                      {pop.content}
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className={`btn btn-outline-primary`} data-bs-dismiss="modal" onClick={()=>{
+                      <button type="button" className={`btn btn-outline-danger`} data-bs-dismiss="modal" onClick={()=>{
                           setpop({...pop, display:false})
                       }}>Close</button>
                      

@@ -1,6 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars, faBell, faBook, faBookOpen, faCoins, faDashboard, faGear, faInfo, faKey, faLockOpen, faMessage, faSearch, faUser, faUserEdit} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faBell, faBook, faBookOpen,  faDashboard, faGear,   faMessage, faSearch, faUser, faPercent, faCertificate} from '@fortawesome/free-solid-svg-icons';
 import logo from '../../Images/logo.png';
 import pro from '../../Images/erim4.jpg';
 
@@ -241,12 +241,18 @@ function Dashboard() {
       </li>
       <li className="nav-item">
         <a className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="/#/login">
-          <span><FontAwesomeIcon icon={faBook} className="bi bi-menu-button-wide"></FontAwesomeIcon> My Courses</span><FontAwesomeIcon icon={faBook} className="bi bi-chevron-down ms-auto"></FontAwesomeIcon>
+          <span><FontAwesomeIcon icon={faBook} className="bi bi-menu-button-wide"></FontAwesomeIcon> My Programme</span>
         </a>
        </li>
       <li className="nav-item">
         <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/login">
-           <span><FontAwesomeIcon icon={faBookOpen} className="bi bi-journal-text"></FontAwesomeIcon> Assignments</span><FontAwesomeIcon icon={faBookOpen} className="bi bi-chevron-down ms-auto"></FontAwesomeIcon>
+           <span><FontAwesomeIcon icon={faBookOpen} className="bi bi-journal-text"></FontAwesomeIcon> Exercise</span>
+        </a>
+         </li>
+
+         <li className="nav-item">
+        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/login">
+           <span><FontAwesomeIcon icon={faCertificate} className="bi bi-journal-text"></FontAwesomeIcon> Certificates</span>
         </a>
          </li>
       
@@ -254,15 +260,13 @@ function Dashboard() {
 
       <li className="nav-item">
         <a className="nav-link collapsed" href="users-profile.html">
-          <FontAwesomeIcon icon={faUser} className="bi bi-person"></FontAwesomeIcon>
-          <span>Profile</span>
+          <FontAwesomeIcon icon={faUser} className="bi bi-person"></FontAwesomeIcon> Profile
         </a>
       </li>
 
       <li className="nav-item">
         <a className="nav-link collapsed" href="pages-faq.html">
-          <FontAwesomeIcon icon={faInfo} className="bi bi-question-circle"></FontAwesomeIcon>
-          <span>F.A.Q</span>
+          <FontAwesomeIcon icon={faGear} className="bi bi-question-circle"></FontAwesomeIcon> <span> Settings</span>
         </a>
       </li>
 
@@ -290,18 +294,14 @@ function Dashboard() {
         
         <div className="col-lg-8">
           <div className="row">
-
-            
             <div className="col-xxl-4 col-md-6">
               <div className="card info-card sales-card">
-
                 <div className="filter">
                   <a className="icon" href="/#/login" data-bs-toggle="dropdown"><FontAwesomeIcon icon={faGear} className="bi bi-three-dots"></FontAwesomeIcon></a>
                   <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li className="dropdown-header text-start">
                       <h6>Filter</h6>
                     </li>
-
                     <li><a className="dropdown-item" href="/#/login">Today</a></li>
                     <li><a className="dropdown-item" href="/#/login">This Month</a></li>
                     <li><a className="dropdown-item" href="/#/login">This Year</a></li>
@@ -309,20 +309,18 @@ function Dashboard() {
                 </div>
 
                 <div className="card-body">
-                  <h5 className="card-title">Programmes/Courses <span>| Active</span></h5>
-
+                  <h5 className="card-title">Programme Activity <span>| Progress</span></h5>
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faBook} className="bi bi-cart"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faPercent} className="bi bi-cart"></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>3</h6>
-                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">increase</span>
-
+                 <input type={'range'} value={17} className=' form-control-range' />
+                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Current Programme
+                      </span>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -344,15 +342,15 @@ function Dashboard() {
                 </div>
 
                 <div className="card-body">
-                  <h5 className="card-title">Your Wallet <span>| Current Balance</span></h5>
+                  <h5 className="card-title">My Certificates <span>| Completed</span></h5>
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <FontAwesomeIcon icon={faCoins} className="bi bi-currency-dollar"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon={faCertificate} className="bi bi-currency-dollar"></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                      <h6>$3,264</h6>
-                      <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">increase</span>
+                      <h6>3</h6>
+                      <span className="text-success small pt-1 fw-bold">Certificate(s)</span> <span className="text-muted small pt-2 ps-1"></span>
 
                     </div>
                   </div>
@@ -380,7 +378,7 @@ function Dashboard() {
                 </div>
 
                 <div className="card-body">
-                  <h5 className="card-title">Assignments <span>| This Year</span></h5>
+                  <h5 className="card-title">Exercise <span>| Completed</span></h5>
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -388,7 +386,7 @@ function Dashboard() {
                     </div>
                     <div className="ps-3">
                       <h6>124</h6>
-                      <span className="text-danger small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">decrease</span>
+                      <span className="text-danger small pt-1 fw-bold">12</span> <span className="text-muted small pt-2 ps-1">Remaining</span>
 
                     </div>
                   </div>

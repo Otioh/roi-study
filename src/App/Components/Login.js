@@ -13,11 +13,11 @@ function Login() {
   let navigate=useNavigate();
  const [email, setemail]= useState('');
  const [password, setpassword]=useState('');
-const {setloading, setDisplay, setmsg, setstatus,  setuser}=useContext(GlobalContext);
+const {setloading, setDisplay, setmsg, setstatus,  setuser, host}=useContext(GlobalContext);
 
   const login=()=>{
     setloading(true)
-    axios.post('http://192.168.0.149:8000/auth', {email,  password}).then((response)=>{
+    axios.post(host+'auth', {email,  password}).then((response)=>{
       setDisplay(true)
       setmsg(response.data.message)
       setloading(false)

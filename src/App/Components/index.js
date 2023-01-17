@@ -12,6 +12,8 @@ import Programmes from './Programmes';
 import Reset from './Reset';
 import Verify from './Verify';
 import Faq from './Faq';
+import Receipt from './Receipt';
+
 function Index({setDisplay}) {
 
 const router=createHashRouter(
@@ -25,6 +27,7 @@ const router=createHashRouter(
     {path:'/reset', element:<Reset/>},
     {path:'/verify', element:<Verify/>},
     {path:'/faq', element:<Faq/>},
+    {path:'/receipt', element:<Receipt/>},
     
   
   ]

@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEnvelope, faKey, faPhone, faUser, faUserEdit, faUserLock} from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope, faKey, faPhone, faUser,  faUserLock} from '@fortawesome/free-solid-svg-icons'
 import logo from '../Images/logo.png';
 import axios from 'axios';
 import GlobalContext from './Context/Api';
@@ -12,12 +12,12 @@ const [email, setemail] = useState("");
 const [phone, setphone] = useState("");
 const [password, setpassword] = useState("");
 
-const {setDisplay, setmsg, setstatus, setloading}=useContext(GlobalContext);
+const {setDisplay, setmsg, setstatus, setloading, host}=useContext(GlobalContext);
 
 
   const register=()=>{
     setloading(true)
-    axios.post('http://192.168.0.149:8000/students', {first_name, surname, email, phone, password}).then((response)=>{
+    axios.post(host+'students', {first_name, surname, email, phone, password}).then((response)=>{
       setDisplay(true)
       setmsg(response.data.message)
       setloading(false)
@@ -27,7 +27,7 @@ if(response.data.status){
   setemail('');
   setpassword('');
   setphone('');
-  setsurname('')
+  setsurname('');
 
 
 }else{

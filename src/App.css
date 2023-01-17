@@ -9194,3 +9194,7 @@ table.dataTable-table:focus {
 .text-primary{
   color: #012970 !important;
 }
+
+.bg-primary{
+ background-color: #012970 !important;
+}
