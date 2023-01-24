@@ -1,22 +1,31 @@
+
 import React, { useContext } from 'react';
 import { PaystackButton } from 'react-paystack';
 import lap from '../Images/images.jpeg';
 import GlobalContext from './Context/Api';
-import { useNavigate } from 'react-router-dom';
-function ProDetails({program}) {
-    const {user, pop, setpop}=useContext(GlobalContext);
-let navigate=useNavigate()
+
+import axios from 'axios';  
+
+function ProDetails({program, afterPay}) {
+    const {user, pop, setpop, host}=useContext(GlobalContext);
+
+
+
     const componentProps = {
         email:user.email,
-        amount:program.fee*1000,
+        amount:program.fee*100,
         metadata: {
           name:user.first_name+" "+user.surname,
           phone:user.phone,
         },
         publicKey:'pk_test_333a6d671ee3429b1b36e2aa2a8bf45eca7d3926',
         text: "Pay Now",
-        onSuccess: () =>{
-          navigate('/dashboard')
+        onSuccess: (msg) =>{
+         
+       axios.post(host+'payments', {payer:user.email, description:'Payment for '+program.duration+' '+program.title+' Training', amount:program.fee, status:msg.message, tran_id:msg.reference}).then((response)=>{
+      
+        afterPay()
+       })
           setpop({...pop, display:false})},
         onClose: () => alert("Wait! You need this oil, don't go!!!!"),
       }
@@ -29,9 +38,16 @@ let navigate=useNavigate()
 
 </div>
 <div className=' col-sm-3'>
-<ul className='list-group' >
- 
+<ul className='list-group'>
 
+{
+                      program.courses.split(',').map((course)=>{
+                                 return           <li className='list-group-item'>
+{course}
+                    </li>
+
+                      })
+                    }
                   </ul>
 </div>
 <div className=' col-sm-4'>
@@ -47,9 +63,7 @@ let navigate=useNavigate()
   <th>
     Duration
   </th>
-  <th>
-    Description
-  </th>
+
   <tbody>
     <tr>
       <td>

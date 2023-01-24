@@ -74,7 +74,6 @@ if(response.data.data[0].verified){
                     <div className="col-sm-10">
                       <input type="email" className="form-control" placeholder='E-Mail' value={email} onChange={(e)=>{
                           setemail(e.target.value);
-                    
                       }} />
                     </div>
                   </div>
@@ -85,14 +84,11 @@ if(response.data.data[0].verified){
                     <div className="col-sm-10">
                       <input type="password" className="form-control" placeholder='Password' value={password} onChange={(e)=>{
                           setpassword(e.target.value);
-                    
                       }} />
                     </div>
                   </div>
 
-                  
                 <div className="row mb-3">
-                 
                   <div className="col-sm-10">
                     <button type="submit" className="btn btn-primary" onClick={()=>{
                   login()

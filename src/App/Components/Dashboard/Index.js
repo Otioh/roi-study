@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars, faBell, faBook, faBookOpen,  faDashboard, faGear,   faMessage, faSearch, faUser, faPercent, faCertificate} from '@fortawesome/free-solid-svg-icons';
+import {faBars,  faBook, faBookOpen,  faDashboard, faGear,    faSearch, faUser, faPercent, faCertificate, faMoneyBill, faPhone, faPowerOff} from '@fortawesome/free-solid-svg-icons';
 import logo from '../../Images/logo.png';
-import pro from '../../Images/erim4.jpg';
+import pro from '../../Images/user.png';
+import GlobalContext from '../Context/Api';
 
 function Dashboard() {
+  const {user}=useContext(GlobalContext);
+
   return (
     <div>
     
@@ -26,170 +29,30 @@ function Dashboard() {
     <nav className="header-nav ms-auto">
       <ul className="d-flex align-items-center">
 
-        <li className="nav-item d-block d-lg-none">
-          <a className="nav-link nav-icon search-bar-toggle " href="/#/login">
-            <FontAwesomeIcon icon={faSearch} className="bi bi-search"></FontAwesomeIcon>
-          </a>
-        </li>
 
-        <li className="nav-item dropdown">
 
-          <a className="nav-link nav-icon" href="/#/login" data-bs-toggle="dropdown">
-            <FontAwesomeIcon icon={faBell} className="bi bi-bell"></FontAwesomeIcon>
-            <span className="badge bg-primary badge-number">4</span>
-          </a>
 
-          <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li className="dropdown-header">
-              You have 4 new notifications
-              <a href="/#/login"><span className="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="notification-item">
-              <FontAwesomeIcon icon={faMessage} className="bi bi-exclamation-circle text-warning"></FontAwesomeIcon>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="notification-item">
-              <FontAwesomeIcon icon={faGear} className="bi bi-x-circle text-danger"></FontAwesomeIcon>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="notification-item">
-              <FontAwesomeIcon icon={faGear} className="bi bi-check-circle text-success"></FontAwesomeIcon>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="notification-item">
-              <FontAwesomeIcon icon={faGear} className="bi bi-info-circle text-primary"></FontAwesomeIcon>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-            <li className="dropdown-footer">
-              <a href="/#/login">Show all notifications</a>
-            </li>
-
-          </ul>
-        </li>
-
-        <li className="nav-item dropdown">
-
-          <a className="nav-link nav-icon" href="/#/login" data-bs-toggle="dropdown">
-            <FontAwesomeIcon icon={faMessage} className="bi bi-chat-left-text"></FontAwesomeIcon>
-            <span className="badge bg-success badge-number">3</span>
-          </a>
-
-          <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li className="dropdown-header">
-              You have 3 new messages
-              <a href="/#/login"><span className="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="message-item">
-              <a href="/#/login">
-                <img src={pro} alt="" className="rounded-circle"/>
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="message-item">
-              <a href="/#/login">
-                <img src="assets/img/messages-2.jpg" alt="" className="rounded-circle"/>
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="message-item">
-              <a href="/#/login">
-                <img src="assets/img/messages-3.jpg" alt="" className="rounded-circle"/>
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr className="dropdown-divider"/>
-            </li>
-
-            <li className="dropdown-footer">
-              <a href="/#/login">Show all messages</a>
-            </li>
-
-          </ul>
-
-        </li>
 
         <li className="nav-item dropdown pe-3">
 
-          <a className="nav-link nav-profile d-flex align-items-center pe-0" href="/#/login" data-bs-toggle="dropdown">
+          <a className="nav-link nav-profile d-flex align-items-center pe-0" href="/#/dashboard" data-bs-toggle="dropdown" onClick={()=>{
+            document.getElementById('profile').style.display='block'
+          }}>
             <img src={pro} className="rounded-circle" alt=''/>
-            <span className="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span className="d-none d-md-block dropdown-toggle ps-2"> {user.first_name} {user.surname}</span>
           </a>
-          <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <ul  id='profile'  className="dropdown-menu ">
             <li className="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>{user.first_name} {user.surname}</h6>
+              <span>{user.email}</span>
             </li>
             <li>
              <hr className="dropdown-divider"/>
             </li>
 
             <li>
-              <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <FontAwesomeIcon icon={faGear} className="bi bi-person"></FontAwesomeIcon>
+              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
+                <FontAwesomeIcon icon={faUser} className="bi bi-person"></FontAwesomeIcon>
                 <span>My Profile</span>
               </a>
             </li>
@@ -198,7 +61,7 @@ function Dashboard() {
             </li>
 
             <li>
-              <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
                 <FontAwesomeIcon icon={faGear} className="bi bi-gear"></FontAwesomeIcon>
                 <span>Account Settings</span>
               </a>
@@ -208,8 +71,8 @@ function Dashboard() {
             </li>
 
             <li>
-              <a className="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <FontAwesomeIcon icon={faGear} className="bi bi-question-circle"></FontAwesomeIcon>
+              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
+                <FontAwesomeIcon icon={faPhone} className="bi bi-question-circle"></FontAwesomeIcon>
                 <span>Need Help?</span>
               </a>
             </li>
@@ -219,7 +82,7 @@ function Dashboard() {
 
             <li>
               <a className="dropdown-item d-flex align-items-center" href="/#/login">
-                <FontAwesomeIcon icon={faGear} className="bi bi-box-arrow-right"></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faPowerOff} className="bi bi-box-arrow-right"></FontAwesomeIcon>
                 <span>Sign Out</span>
               </a>
             </li>
@@ -235,37 +98,43 @@ function Dashboard() {
     <ul className="sidebar-nav" id="sidebar-nav">
 
       <li className="nav-item">
-        <a className="nav-link " href="index.html">
+        <a className="nav-link " href="/#/dashboard">
           <span> <FontAwesomeIcon icon={faDashboard} className="bi bi-grid"></FontAwesomeIcon> Dashboard</span>
         </a>
       </li>
       <li className="nav-item">
-        <a className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="/#/login">
+        <a className="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="/#/activities">
           <span><FontAwesomeIcon icon={faBook} className="bi bi-menu-button-wide"></FontAwesomeIcon> My Programme</span>
         </a>
        </li>
       <li className="nav-item">
-        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/login">
+        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/exercise">
            <span><FontAwesomeIcon icon={faBookOpen} className="bi bi-journal-text"></FontAwesomeIcon> Exercise</span>
         </a>
          </li>
 
          <li className="nav-item">
-        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/login">
+        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/certificates">
            <span><FontAwesomeIcon icon={faCertificate} className="bi bi-journal-text"></FontAwesomeIcon> Certificates</span>
         </a>
          </li>
       
 
+         <li className="nav-item">
+        <a className="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="/#/payments">
+           <span><FontAwesomeIcon icon={faMoneyBill} className="bi bi-journal-text"></FontAwesomeIcon> Payments</span>
+        </a>
+         </li>
+
 
       <li className="nav-item">
-        <a className="nav-link collapsed" href="users-profile.html">
+        <a className="nav-link collapsed" href="/#/profile">
           <FontAwesomeIcon icon={faUser} className="bi bi-person"></FontAwesomeIcon> Profile
         </a>
       </li>
 
       <li className="nav-item">
-        <a className="nav-link collapsed" href="pages-faq.html">
+        <a className="nav-link collapsed" href="/#/settings">
           <FontAwesomeIcon icon={faGear} className="bi bi-question-circle"></FontAwesomeIcon> <span> Settings</span>
         </a>
       </li>
@@ -315,8 +184,12 @@ function Dashboard() {
                       <FontAwesomeIcon icon={faPercent} className="bi bi-cart"></FontAwesomeIcon>
                     </div>
                     <div className="ps-3">
-                 <input type={'range'} value={17} className=' form-control-range' />
-                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Current Programme
+            
+                    
+              <div className="progress">
+                <div className="progress-bar" role="progressbar" style={{width: '56%'}} aria-valuenow="56" aria-valuemin="0" aria-valuemax="100">56%</div>
+              </div>
+                     <span className="text-muted small pt-2 ps-1">Web Development (Front End)
                       </span>
                     </div>
                   </div>

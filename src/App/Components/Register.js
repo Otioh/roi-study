@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEnvelope, faKey, faPhone, faUser,  faUserLock} from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope, faGenderless, faKey, faLocation, faLocationDot, faLocationPin, faPhone, faPlaceOfWorship, faUser,  faUserLock} from '@fortawesome/free-solid-svg-icons'
 import logo from '../Images/logo.png';
 import axios from 'axios';
 import GlobalContext from './Context/Api';
@@ -11,13 +11,17 @@ const [surname, setsurname] = useState("");
 const [email, setemail] = useState("");
 const [phone, setphone] = useState("");
 const [password, setpassword] = useState("");
+const [address, setaddress] = useState('');
+const [lga, setlga] = useState('');
+const [state, setstate] = useState('');
+const [gender, setgender] = useState('');
 
 const {setDisplay, setmsg, setstatus, setloading, host}=useContext(GlobalContext);
 
 
   const register=()=>{
     setloading(true)
-    axios.post(host+'students', {first_name, surname, email, phone, password}).then((response)=>{
+    axios.post(host+'students', {first_name, surname, email, phone, password, address, lga, state, gender}).then((response)=>{
       setDisplay(true)
       setmsg(response.data.message)
       setloading(false)
@@ -28,6 +32,10 @@ if(response.data.status){
   setpassword('');
   setphone('');
   setsurname('');
+  setaddress('');
+  setlga('');
+  setstate('');
+  setgender('');
 
 
 }else{
@@ -111,6 +119,63 @@ if(response.data.status){
                       }} />
                     </div>
                   </div>
+
+
+                  <div className="row mb-3">
+                    <label for="inputEmail" className="col-sm-2 col-form-label">
+                      <FontAwesomeIcon icon={faLocation}></FontAwesomeIcon>
+                      </label>
+                    <div className="col-sm-10">
+                      <input type="text" className="form-control" placeholder='Residential Address' value={address} onChange={(e)=>{
+                        setaddress(e.target.value)
+                      }} />
+                    </div>
+                  </div>
+
+
+
+                  <div className="row mb-3">
+                    <label for="inputEmail" className="col-sm-2 col-form-label">
+                      <FontAwesomeIcon icon={faLocationPin}></FontAwesomeIcon>
+                      </label>
+                    <div className="col-sm-10">
+                      <input type="text" className="form-control" placeholder='LGA of Origin' value={lga} onChange={(e)=>{
+                        setlga(e.target.value)
+                      }} />
+                    </div>
+                  </div>
+
+
+
+
+                  <div className="row mb-3">
+                    <label for="inputEmail" className="col-sm-2 col-form-label">
+                      <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
+                      </label>
+                    <div className="col-sm-10">
+                      <input type="text" className="form-control" placeholder='State of Origin' value={state} onChange={(e)=>{
+                        setstate(e.target.value)
+                      }} />
+                    </div>
+                  </div>
+
+
+
+                  <div className="row mb-3">
+                    <label for="inputPassword" className="col-sm-2 col-form-label">
+                      <FontAwesomeIcon icon={faGenderless}></FontAwesomeIcon>
+                    </label>
+                    <div className="col-sm-10">
+                      <input type="radio" name='gender' className="" placeholder='Password' value='Male' onChange={(e)=>{
+                        setgender(e.target.value)
+                      }} />
+                      Male <input type="radio" name='gender' className="" placeholder='Password' value='Female' onChange={(e)=>{
+                        setgender(e.target.value)
+                      }} />
+                      Female
+                    </div>
+                  </div>
+
 
 
                   <div className="row mb-3">

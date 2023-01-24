@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars, faCoins, faDashboard, faGear,faPhone, faPowerOff,  faUser } from '@fortawesome/free-solid-svg-icons';
+import {faBars, faCoins, faBook, faGear,faPhone, faPowerOff,  faUser } from '@fortawesome/free-solid-svg-icons';
 import logo from '../Images/logo.png';
 import pro from '../Images/user.png';
 import lap from '../Images/images.jpeg';
@@ -8,11 +8,12 @@ import GlobalContext from './Context/Api';
 
 import axios from 'axios';
 import ProDetails from './ProDetails';
+import { useNavigate } from 'react-router-dom';
 
 function Programmes() {
     const {user,  setpop, setloading,  host}=useContext(GlobalContext);
 
-
+let navigate=useNavigate()
 
 const [programmes, setprogrammes] = useState([]);
 
@@ -23,11 +24,13 @@ axios.get(host+'programmes').then((response)=>{
 
   
 })
-}, [])
+}, [host])
 
 
 
-
+const afterPay =()=>{
+  navigate('/dashboard')
+  }
 
    
   return (
@@ -115,8 +118,8 @@ axios.get(host+'programmes').then((response)=>{
     <ul className="sidebar-nav" id="sidebar-nav">
 
       <li className="nav-item">
-        <a className="nav-link " href="index.html">
-          <span> <FontAwesomeIcon icon={faDashboard} className="bi bi-grid"></FontAwesomeIcon> Select Programme</span>
+        <a className="nav-link " href="/#/programmes">
+          <span> <FontAwesomeIcon icon={faBook} className="bi bi-grid"></FontAwesomeIcon> Select Programme</span>
         </a>
       </li>
       
@@ -134,7 +137,7 @@ axios.get(host+'programmes').then((response)=>{
       <h1>Select A Programme</h1>
       <nav>
         <ol className="breadcrumb">
-          <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li className="breadcrumb-item"><a href="/#/">Home</a></li>
           <li className="breadcrumb-item active">Programmes</li>
         </ol>
       </nav>
@@ -194,7 +197,7 @@ axios.get(host+'programmes').then((response)=>{
                   <button style={{width:'95%'}} className='btn btn-primary' onClick={()=>{
                     setloading(true)
 
-                    setpop({display:true, title:`${user.first_name} ${user.surname}  || ${program.title} | ${program.qualification}`, content:<ProDetails program={program}/>})
+                    setpop({display:true, title:`${user.first_name} ${user.surname}  || ${program.title} | ${program.qualification}`, content:<ProDetails afterPay={afterPay}  program={program}/>})
 
 setTimeout(() => {
   setloading(false)
@@ -205,30 +208,15 @@ setTimeout(() => {
 
                   </div>
                   <ul className='list-group'>
-                    <li className='list-group-item'>
-Web Basics
+
+                    {
+                      program.courses.split(',').map((course)=>{
+                                 return           <li className='list-group-item'>
+{course}
                     </li>
 
-
-                    <li className='list-group-item'>
-JavaScript Basics
-                    </li>
-
-
-                    <li className='list-group-item'>
-Advance JavaScript
-                    </li>
-
-
-                    <li className='list-group-item'>
-React JS
-                    </li>
-
-
-
-                    <li className='list-group-item'>
-Redux & Redux Toolkit
-                    </li>
+                      })
+                    }
                   </ul>
            
                   
