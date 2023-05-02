@@ -12,7 +12,7 @@ function Modal() {
                 <div className="modal-dialog">
                   <div className="modal-content ">
                     <div className="modal-header">
-                      <h5 className={status?`modal-title text-success`:`modal-title text-warning`}>{ status?<><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> Success </>:<><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon> Error </>}</h5>
+                      <h5 className={status?`modal-title site-text`:`modal-title site-text`}>{ status?<><FontAwesomeIcon icon={faCheck}></FontAwesomeIcon> Success </>:<><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon> Error </>}</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={()=>{
                         setDisplay(false)
                       }}></button>
@@ -21,7 +21,7 @@ function Modal() {
                      {msg}
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className={status?`btn btn-success`:`btn btn-warning`} data-bs-dismiss="modal" onClick={()=>{
+                      <button type="button" className={status?`site-btn btn-success`:`site-btn btn-warning`} data-bs-dismiss="modal" onClick={()=>{
                         setDisplay(false)
                       }}>Close</button>
                      

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars, faCoins, faBook, faGear,faPhone, faPowerOff,  faUser } from '@fortawesome/free-solid-svg-icons';
-import logo from '../Images/logo.png';
-import pro from '../Images/user.png';
+
 import lap from '../Images/images.jpeg';
-import GlobalContext from './Context/Api';
+import GlobalContext from "../../Components/Context/Api";
 
 import axios from 'axios';
 import ProDetails from './ProDetails';
 import { useNavigate } from 'react-router-dom';
+import Navigation from '../../Components/Navigation';
 
 function Programmes() {
     const {user,  setpop, setloading,  host}=useContext(GlobalContext);
@@ -36,99 +36,7 @@ const afterPay =()=>{
   return (
     <div>
     
-  <header id="header" className="header fixed-top d-flex align-items-center">
-
-    <div className="d-flex align-items-center justify-content-between">
-      <a href="/#/" style={{textDecoration:'none'}} className="logo d-flex align-items-center">
-      <img src={logo} alt=""/>
-          <span className="d-none d-lg-block">Roi Study</span>
-      </a>
-      <FontAwesomeIcon icon={faBars} className="bi bi-list toggle-sidebar-btn"></FontAwesomeIcon>
-    </div>
-  
-    <nav className="header-nav ms-auto">
-      <ul className="d-flex align-items-center">
-
-
-
-
-
-        <li className="nav-item dropdown pe-3">
-
-          <a className="nav-link nav-profile d-flex align-items-center pe-0" href="/#/programmes" data-bs-toggle="dropdown" onClick={()=>{
-            document.getElementById('profile').style.display='block'
-          }}>
-            <img src={pro} className="rounded-circle" alt=''/>
-            <span className="d-none d-md-block dropdown-toggle ps-2"> {user.first_name} {user.surname}</span>
-          </a>
-          <ul  id='profile'  className="dropdown-menu ">
-            <li className="dropdown-header">
-              <h6>{user.first_name} {user.surname}</h6>
-              <span>{user.email}</span>
-            </li>
-            <li>
-             <hr className="dropdown-divider"/>
-            </li>
-
-            <li>
-              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
-                <FontAwesomeIcon icon={faUser} className="bi bi-person"></FontAwesomeIcon>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-             <hr className="dropdown-divider"/>
-            </li>
-
-            <li>
-              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
-                <FontAwesomeIcon icon={faGear} className="bi bi-gear"></FontAwesomeIcon>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-             <hr className="dropdown-divider"/>
-            </li>
-
-            <li>
-              <a className="dropdown-item d-flex align-items-center" href="/#/programmes">
-                <FontAwesomeIcon icon={faPhone} className="bi bi-question-circle"></FontAwesomeIcon>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-             <hr className="dropdown-divider"/>
-            </li>
-
-            <li>
-              <a className="dropdown-item d-flex align-items-center" href="/#/login">
-                <FontAwesomeIcon icon={faPowerOff} className="bi bi-box-arrow-right"></FontAwesomeIcon>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul>
-        </li>
-
-      </ul>
-    </nav>
-  </header>
-  <aside id="sidebar" className="sidebar"  >
-
-    <ul className="sidebar-nav" id="sidebar-nav">
-
-      <li className="nav-item">
-        <a className="nav-link " href="/#/programmes">
-          <span> <FontAwesomeIcon icon={faBook} className="bi bi-grid"></FontAwesomeIcon> Select Programme</span>
-        </a>
-      </li>
-      
-     
-
-    </ul>
-
-  </aside>
-
+ <Navigation/>
   <main id="main" className="main" style={{backgroundColor:'#f6f9ff'}} onClick={()=>{
             document.getElementById('profile').style.display='none'
           }}>

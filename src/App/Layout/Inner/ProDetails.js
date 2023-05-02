@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { PaystackButton } from 'react-paystack';
 import lap from '../Images/images.jpeg';
-import GlobalContext from './Context/Api';
+import GlobalContext from "../../Components/Context/Api";
 
 import axios from 'axios';  
 

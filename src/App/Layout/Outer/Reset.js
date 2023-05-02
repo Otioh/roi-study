@@ -1,6 +1,7 @@
+
 import React, { useContext, useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEnvelope, faKey, faLockOpen, faUserEdit} from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope, faKey, faLock, faLockOpen, faUserEdit} from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import logo from '../Images/logo.png';
 
@@ -8,36 +9,22 @@ import GlobalContext from './Context/Api';
 import axios from 'axios';
 
 
+function Reset() {
+    const [email, setemail]= useState('');
+    const {setloading, setDisplay, setmsg, setstatus,  setuser}=useContext(GlobalContext);
+    let navigate=useNavigate();
 
-function Login() {
-  let navigate=useNavigate();
- const [email, setemail]= useState('');
- const [password, setpassword]=useState('');
-const {setloading, setDisplay, setmsg, setstatus,  setuser, host}=useContext(GlobalContext);
 
-  const login=()=>{
-    setloading(true)
-    axios.post(host+'auth', {email,  password}).then((response)=>{
-      setDisplay(true)
-      setmsg(response.data.message)
-      setloading(false)
-if(response.data.status){
-  setstatus(true)
-setuser(response.data.data[0])
-if(response.data.data[0].verified){
-  navigate('/programmes');
-}else{
-  navigate('/verify');
+const reset=()=>{
+  setmsg('Please try again later');
+  setstatus(false);
+  setDisplay(true)
 }
-  
-}else{
-  setstatus(false)
-}
-    })
-  }
-
 
   return (
+
+      
+    
 <div style={{backgroundColor:'#f6f9ff', height:'90vh'}}>
     <header id="header" className="header fixed-top d-flex align-items-center">
   
@@ -56,7 +43,7 @@ if(response.data.data[0].verified){
     <main id="main" className="main" >
 
       <div className="pagetitle">
-        <h1>Login to Dashboard</h1>
+        <h1>Reset Password</h1>
         
       </div>
       <section className="section">
@@ -65,7 +52,7 @@ if(response.data.data[0].verified){
   
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Enter Details to Login</h5>
+                <h5 className="card-title">Enter Details to Recover Password</h5>
       <div className="row mb-3">
                     <label for="inputEmail" className="col-sm-2 col-form-label">
                       <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
@@ -73,27 +60,20 @@ if(response.data.data[0].verified){
                     <div className="col-sm-10">
                       <input type="email" className="form-control" placeholder='E-Mail' value={email} onChange={(e)=>{
                           setemail(e.target.value);
+                    
                       }} />
                     </div>
                   </div>
-                  <div className="row mb-3">
-                    <label for="inputPassword" className="col-sm-2 col-form-label">
-                      <FontAwesomeIcon icon={faKey}></FontAwesomeIcon>
-                    </label>
-                    <div className="col-sm-10">
-                      <input type="password" className="form-control" placeholder='Password' value={password} onChange={(e)=>{
-                          setpassword(e.target.value);
-                      }} />
-                    </div>
-                  </div>
+    
 
+                  
                 <div className="row mb-3">
+                 
                   <div className="col-sm-10">
                     <button type="submit" className="btn btn-primary" onClick={()=>{
-                  login()
-                    }}> <FontAwesomeIcon icon={faLockOpen}></FontAwesomeIcon> Login</button>
-                    <br/>
-                    <a href='/#/reset'  className=" btn-outline-primary">Forgotten Password?</a>
+            reset()
+                    }}> <FontAwesomeIcon icon={faKey}></FontAwesomeIcon> Reset</button>
+            
                 
                   </div>
                 </div>
@@ -101,8 +81,8 @@ if(response.data.data[0].verified){
 
       
                 <button style={{float:'right'}} type="submit" className="btn btn-outline-primary" onClick={()=>{
-   navigate('/register')
-                }}> <FontAwesomeIcon icon={faUserEdit}></FontAwesomeIcon> Register</button>
+   navigate('/login')
+                }}> <FontAwesomeIcon icon={faLock}></FontAwesomeIcon> Login</button>
                
               </div>
             </div>
@@ -115,8 +95,9 @@ if(response.data.data[0].verified){
   
     </main>
 
+
     </div>
   )
 }
 
-export default Login
+export default Reset

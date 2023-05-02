@@ -1,9 +1,10 @@
 import React, {useContext, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faGenderless, faKey, faLocation, faLocationDot, faLocationPin, faPhone, faPlaceOfWorship, faUser,  faUserLock} from '@fortawesome/free-solid-svg-icons'
-import logo from '../Images/logo.png';
+
 import axios from 'axios';
-import GlobalContext from './Context/Api';
+import GlobalContext from "../../Components/Context/Api";
+import Navigation from '../../Components/Navigation';
 
 function Register() {
 const [first_name, setfirst_name] = useState("");
@@ -45,19 +46,7 @@ if(response.data.status){
   }
   return (
     <div style={{backgroundColor:'#f6f9ff', height:'90vh'}}>
-    <header id="header" className="header fixed-top d-flex align-items-center">
-  
-      <div className="d-flex align-items-center justify-content-between">
-        <a href="/#/" style={{textDecoration:'none'}} className="logo d-flex align-items-center">
-          <img src={logo} alt=""/>
-          <span className="d-none d-lg-block">Roi Study</span>
-        </a>
-        <i className="bi bi-list toggle-sidebar-btn"></i>
-      </div>
-  
-     
-  
-    </header>
+    <Navigation/>
 
     <main id="main" className="main" >
   

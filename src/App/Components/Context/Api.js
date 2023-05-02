@@ -8,6 +8,7 @@ export const ContextProvider=({children})=>{
     const [status, setstatus] = useState(false);
     const [loading, setloading] = useState(false);
     const [user, setuser] = useState({});
+    const [isLogin, setisLogin] = useState(false)
     const host ='http://localhost:8000/';
     const [pop, setpop] = useState({
         display:false,
@@ -15,14 +16,28 @@ export const ContextProvider=({children})=>{
         content:<></>
     });
 return (
-    <GlobalContext.Provider value={{
-        display, setDisplay, msg, status, setmsg, setstatus, loading, setloading, user, setuser, pop, setpop
-        , host
-        }}>
-        {children}
-    </GlobalContext.Provider>
-    
-        )
+  <GlobalContext.Provider
+    value={{
+      display,
+      setDisplay,
+      msg,
+      status,
+      setmsg,
+      setstatus,
+      loading,
+      setloading,
+      user,
+      setuser,
+      pop,
+      setpop,
+      host,
+      isLogin,
+      setisLogin,
+    }}
+  >
+    {children}
+  </GlobalContext.Provider>
+);
     }
     
     export default GlobalContext;
